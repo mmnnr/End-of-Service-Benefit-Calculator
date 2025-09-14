@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title data-i18n="title">حاسبة مستحقات نهاية الخدمة | أصول</title>
 
-  <!-- نفس مكتبات التصميم القديمة -->
+  <!-- Tailwind v2 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
@@ -30,8 +30,9 @@
     .outline-btn:hover{background:#fafafa}
     .nice-input{ border:1px solid rgba(15,23,42,.10); transition: box-shadow .2s, border-color .2s, transform .05s; }
     .nice-input:focus{ border-color: var(--osoul-green-500); box-shadow: 0 0 0 3px rgba(57,169,53,.15); outline:none; }
-    .hint{font-size:.84rem; color:#64748b}
-    .card{background:#fff; border-radius:1rem; padding:1.25rem}
+    .hint{font-size:.9rem; color:#64748b}
+    .card{background:#fff; border-radius:1rem; padding:1rem}
+    @media (min-width:640px){ .card{padding:1.25rem} }
     .card-elev{ box-shadow: 0 10px 28px rgba(16,24,40,.06); }
     .topbar{
       background:
@@ -40,7 +41,7 @@
       color:#fff;
     }
     .badge{ display:inline-flex; align-items:center; gap:.4rem; padding:.25rem .6rem; border-radius:999px; font-size:.78rem; font-weight:600; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.35);}
-    .lang-switch button{padding:.25rem .6rem; border-radius:.5rem; font-weight:600}
+    .lang-switch button{padding:.35rem .7rem; border-radius:.5rem; font-weight:600}
     .lang-active{ background:#ffffff30; border:1px solid #ffffff66 }
     @media print{
       .no-print{display:none !important}
@@ -54,42 +55,44 @@
 <body class="min-h-screen brand-hero rtl">
   <!-- الشريط العلوي -->
   <div class="topbar no-print">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
       <div class="flex items-center gap-3">
-        <img src="https://www.canva.com/design/DAGy88mCv4E/4wVavDEYwH6XeM3SxeUySA/edit?utm_content=DAGy88mCv4E&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" alt="Osoul Logo" class="w-12 h-auto select-none"/>
-        <div>
-          <div class="text-lg font-bold leading-tight" data-i18n="appName">حاسبة مستحقات نهاية الخدمة</div>
-          <div class="text-xs opacity-90" data-i18n="appSubtitle">وفقاً لنظام العمل السعودي</div>
+        <img src="/osoul icon.png" alt="Osoul Logo" class="w-10 sm:w-12 h-auto select-none"/>
+        <div class="leading-tight">
+          <div class="text-base sm:text-lg font-bold" data-i18n="appName">حاسبة مستحقات نهاية الخدمة</div>
+          <div class="text-2xs sm:text-xs opacity-90" data-i18n="appSubtitle">وفقاً لنظام العمل السعودي</div>
         </div>
       </div>
 
       <!-- مُبدّل اللغة -->
-      <div class="lang-switch flex items-center gap-2">
-        <button id="btn-ar" class="lang-active">العربية</button>
-        <button id="btn-en">English</button>
-        <span class="badge"><i class="fa-solid fa-shield-check"></i> <span data-i18n="verified">موثّق معلوماتيًا</span></span>
+      <div class="lang-switch flex items-center flex-wrap gap-2">
+        <div class="flex gap-2">
+          <button id="btn-ar" class="lang-active text-sm">العربية</button>
+          <button id="btn-en" class="text-sm">English</button>
+        </div>
+        <span class="badge mt-1 sm:mt-0 text-xs"><i class="fa-solid fa-shield-check text-[11px]"></i> <span data-i18n="verified">موثّق معلوماتيًا</span></span>
       </div>
     </div>
   </div>
 
-  <main class="max-w-6xl mx-auto p-4 md:p-6">
+  <main class="max-w-7xl mx-auto p-3 sm:p-4 md:p-6">
     <!-- هيدر داخلي -->
-    <header class="text-center mb-8">
-      <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full brand-ribbon text-white shadow">
-        <i class="fas fa-calculator"></i>
-        <h1 class="text-2xl md:text-3xl font-bold" data-i18n="hero">حاسبة مستحقات نهاية الخدمة</h1>
+    <header class="text-center mb-6 sm:mb-8">
+      <div class="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 rounded-full brand-ribbon text-white shadow">
+        <i class="fas fa-calculator text-sm sm:text-base"></i>
+        <h1 class="text-xl sm:text-2xl md:text-3xl font-bold" data-i18n="hero">حاسبة مستحقات نهاية الخدمة</h1>
       </div>
-      <p class="mt-3 hint" data-i18n="heroHint">أدخل بياناتك واحصل على تفصيل دقيق للمستحقات حسب نوع انتهاء العلاقة التعاقدية.</p>
+      <p class="mt-3 hint max-w-3xl mx-auto px-2" data-i18n="heroHint">أدخل بياناتك واحصل على تفصيل دقيق للمستحقات حسب نوع انتهاء العلاقة التعاقدية.</p>
     </header>
 
-    <div class="grid lg:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
       <!-- نموذج -->
       <section class="card card-elev brand-border">
         <div class="flex items-center gap-2 mb-4">
-          <span class="w-9 h-9 rounded-xl gold-pill flex items-center justify-center shadow">
+          <span class="w-8 sm:w-9 h-8 sm:h-9 rounded-xl gold-pill flex items-center justify-center shadow text-sm">
             <i class="fas fa-user"></i>
           </span>
-          <h2 class="text-xl font-semibold" data-i18n="employeeData">بيانات الموظف</h2>
+          <h2 class="text-lg sm:text-xl font-semibold" data-i18n="employeeData">بيانات الموظف</h2>
         </div>
 
         <form id="calculatorForm" class="space-y-4">
@@ -98,7 +101,7 @@
               <i class="fas fa-calendar-alt ml-1 text-gray-500"></i>
               <span data-i18n="startDateLabel">تاريخ بداية العمل</span>
             </label>
-            <input type="date" id="startDate" class="nice-input w-full px-3 py-2 rounded-lg" required/>
+            <input type="date" id="startDate" class="nice-input w-full px-3 py-3 sm:py-2 rounded-lg" required/>
             <div id="startDateError" class="text-red-600 text-sm mt-1 hidden"></div>
           </div>
 
@@ -107,7 +110,7 @@
               <i class="fas fa-calendar-alt ml-1 text-gray-500"></i>
               <span data-i18n="endDateLabel">تاريخ نهاية العمل</span>
             </label>
-            <input type="date" id="endDate" class="nice-input w-full px-3 py-2 rounded-lg" required/>
+            <input type="date" id="endDate" class="nice-input w-full px-3 py-3 sm:py-2 rounded-lg" required/>
             <div id="endDateError" class="text-red-600 text-sm mt-1 hidden"></div>
           </div>
 
@@ -116,13 +119,13 @@
               <i class="fas fa-money-bill-wave ml-1 text-gray-500"></i>
               <span data-i18n="salaryLabel">الراتب الشهري الأساسي (ريال)</span>
             </label>
-            <input type="number" id="monthlySalary" placeholder="مثال: 5000" class="nice-input w-full px-3 py-2 rounded-lg" required/>
+            <input type="number" id="monthlySalary" inputmode="decimal" placeholder="مثال: 5000" class="nice-input w-full px-3 py-3 sm:py-2 rounded-lg" required/>
             <div id="salaryError" class="text-red-600 text-sm mt-1 hidden"></div>
           </div>
 
           <div>
             <label class="block text-sm font-medium mb-1" data-i18n="terminationLabel">سبب إنهاء الخدمة</label>
-            <select id="terminationType" class="nice-input w-full px-3 py-2 rounded-lg">
+            <select id="terminationType" class="nice-input w-full px-3 py-3 sm:py-2 rounded-lg">
               <option value="resignation" data-i18n="optResignation">استقالة</option>
               <option value="termination" data-i18n="optTermination">فصل</option>
               <option value="contract_end" data-i18n="optContractEnd">انتهاء العقد</option>
@@ -138,15 +141,15 @@
 
           <div id="allowancesSection" class="hidden">
             <label class="block text-sm font-medium mb-1" data-i18n="allowancesLabel">قيمة البدلات الثابتة (ريال)</label>
-            <input type="number" id="allowancesAmount" placeholder="مثال: 1000" class="nice-input w-full px-3 py-2 rounded-lg"/>
+            <input type="number" id="allowancesAmount" inputmode="decimal" placeholder="مثال: 1000" class="nice-input w-full px-3 py-3 sm:py-2 rounded-lg"/>
             <div id="allowancesError" class="text-red-600 text-sm mt-1 hidden"></div>
           </div>
 
-          <div class="flex gap-3 pt-4">
-            <button type="submit" class="flex-1 brand-btn px-4 py-2 rounded-lg font-semibold shadow" data-i18n="btnCalculate">
+          <div class="flex flex-col sm:flex-row gap-3 pt-2">
+            <button type="submit" class="brand-btn px-4 py-3 sm:py-2 rounded-lg font-semibold shadow w-full sm:w-auto" data-i18n="btnCalculate">
               احسب المستحقات
             </button>
-            <button type="button" id="resetBtn" class="outline-btn px-4 py-2 rounded-lg" data-i18n="btnReset">
+            <button type="button" id="resetBtn" class="outline-btn px-4 py-3 sm:py-2 rounded-lg w-full sm:w-auto" data-i18n="btnReset">
               إعادة تعيين
             </button>
           </div>
@@ -158,20 +161,20 @@
       <!-- النتائج -->
       <section class="card card-elev brand-border">
         <div class="flex items-center gap-2 mb-4">
-          <span class="w-9 h-9 rounded-xl gold-pill flex items-center justify-center shadow">
+          <span class="w-8 sm:w-9 h-8 sm:h-9 rounded-xl gold-pill flex items-center justify-center shadow text-sm">
             <i class="fas fa-file-invoice-dollar"></i>
           </span>
-          <h2 class="text-xl font-semibold" data-i18n="results">النتائج</h2>
+          <h2 class="text-lg sm:text-xl font-semibold" data-i18n="results">النتائج</h2>
         </div>
 
         <div id="resultsContainer" class="text-center py-10 text-gray-500">
-          <i class="fas fa-calculator text-5xl text-gray-300 mb-3"></i>
+          <i class="fas fa-calculator text-4xl sm:text-5xl text-gray-300 mb-3"></i>
           <p data-i18n="enterData">أدخل البيانات المطلوبة لحساب مستحقات نهاية الخدمة</p>
         </div>
 
         <div id="results" class="hidden space-y-5">
           <div class="p-4 rounded-lg brand-border">
-            <h3 class="font-semibold mb-1" data-i18n="servicePeriod">فترة الخدمة</h3>
+            <h3 class="font-semibold mb-2" data-i18n="servicePeriod">فترة الخدمة</h3>
             <p id="serviceTime" class="text-gray-700"></p>
             <p id="totalYears" class="text-xs text-gray-500 mt-1"></p>
           </div>
@@ -188,7 +191,7 @@
 
           <div class="text-white p-6 rounded-xl text-center shadow" style="background:linear-gradient(90deg, var(--osoul-green-500), var(--osoul-green-600))">
             <h3 class="text-lg font-semibold mb-1" data-i18n="totalBenefitTitle">إجمالي مستحقات نهاية الخدمة</h3>
-            <p id="totalBenefit" class="text-3xl font-extrabold tracking-wide"></p>
+            <p id="totalBenefit" class="text-2xl sm:text-3xl font-extrabold tracking-wide"></p>
           </div>
 
           <div class="p-4 rounded-lg border-r-4" style="background:#fff9e6; border-color:#f2c14e">
@@ -207,67 +210,45 @@
 
     <!-- الطباعة -->
     <div class="text-center mt-8 no-print">
-      <button id="printBtn" class="brand-btn px-6 py-2 rounded-lg font-semibold shadow hidden">
+      <button id="printBtn" class="brand-btn px-6 py-3 sm:py-2 rounded-lg font-semibold shadow hidden w-full sm:w-auto">
         <i class="fas fa-print ml-2"></i> <span data-i18n="print">طباعة النتائج</span>
       </button>
     </div>
 
-    <footer class="text-center mt-8 text-gray-500 text-sm">
+    <footer class="text-center mt-8 text-gray-500 text-xs sm:text-sm px-3">
       <p data-i18n="footer">© أصول — حاسبة مستحقات نهاية الخدمة</p>
     </footer>
   </main>
 
-  <!-- ====== المنطق + الترجمة ====== -->
+  <!-- ====== المنطق + الترجمة (كما أرسلتها) ====== -->
   <script>
-    // 1) i18n القاموس
     const i18n = {
       ar: {
-        title: "حاسبة مستحقات نهاية الخدمة | أصول",
-        appName: "حاسبة مستحقات نهاية الخدمة",
-        appSubtitle: "وفقاً لنظام العمل السعودي",
-        verified: "موثّق معلوماتيًا",
+        title: "حاسبة مستحقات نهاية الخدمة | أصول", appName: "حاسبة مستحقات نهاية الخدمة",
+        appSubtitle: "وفقاً لنظام العمل السعودي", verified: "موثّق معلوماتيًا",
         hero: "حاسبة مستحقات نهاية الخدمة",
         heroHint: "أدخل بياناتك واحصل على تفصيل دقيق للمستحقات حسب نوع انتهاء العلاقة التعاقدية.",
-        employeeData: "بيانات الموظف",
-        startDateLabel: "تاريخ بداية العمل",
-        endDateLabel: "تاريخ نهاية العمل",
-        salaryLabel: "الراتب الشهري الأساسي (ريال)",
-        terminationLabel: "سبب إنهاء الخدمة",
-        optResignation: "استقالة",
-        optTermination: "فصل",
-        optContractEnd: "انتهاء العقد",
-        hasAllowances: "يوجد بدلات ثابتة",
-        allowancesLabel: "قيمة البدلات الثابتة (ريال)",
-        btnCalculate: "احسب المستحقات",
-        btnReset: "إعادة تعيين",
+        employeeData: "بيانات الموظف", startDateLabel: "تاريخ بداية العمل", endDateLabel: "تاريخ نهاية العمل",
+        salaryLabel: "الراتب الشهري الأساسي (ريال)", terminationLabel: "سبب إنهاء الخدمة",
+        optResignation: "استقالة", optTermination: "فصل", optContractEnd: "انتهاء العقد",
+        hasAllowances: "يوجد بدلات ثابتة", allowancesLabel: "قيمة البدلات الثابتة (ريال)",
+        btnCalculate: "احسب المستحقات", btnReset: "إعادة تعيين",
         disclaimer: "* الحسابات تقديرية ويُنصح بمراجعة الموارد البشرية لاعتماد المبلغ النهائي.",
-        results: "النتائج",
-        enterData: "أدخل البيانات المطلوبة لحساب مستحقات نهاية الخدمة",
-        servicePeriod: "فترة الخدمة",
-        salaryDetails: "تفاصيل الراتب",
-        calcSteps: "حساب المكافأة",
-        totalBenefitTitle: "إجمالي مستحقات نهاية الخدمة",
-        notesTitle: "ملاحظات مهمة:",
+        results: "النتائج", enterData: "أدخل البيانات المطلوبة لحساب مستحقات نهاية الخدمة",
+        servicePeriod: "فترة الخدمة", salaryDetails: "تفاصيل الراتب", calcSteps: "حساب المكافأة",
+        totalBenefitTitle: "إجمالي مستحقات نهاية الخدمة", notesTitle: "ملاحظات مهمة:",
         note1: "• هذا الحساب وفقًا لنظام العمل السعودي.",
         note2: "• <strong>الاستقالة:</strong> يبدأ الاستحقاق عند بلوغ سنتين: حتى 5 سنوات = الراتب/6 لكل سنة، 5–<10 = الراتب/3، 10+ = راتب كامل.",
         note3: "• <strong>انتهاء العقد:</strong> نصف راتب لأول 5 سنوات، راتب كامل لما بعدها.",
         note4: "• <strong>الفصل:</strong> راتب كامل عن كل سنة (إذا كان الاستحقاق قائمًا).",
         note5: "• يُنصح بمراجعة الموارد البشرية للتأكد من الحساب النهائي.",
-        print: "طباعة النتائج",
-        footer: "© أصول — حاسبة مستحقات نهاية الخدمة",
-        // رسائل التحقق
-        errStart: "تاريخ بداية العمل مطلوب",
-        errEnd: "تاريخ نهاية العمل مطلوب",
+        print: "طباعة النتائج", footer: "© أصول — حاسبة مستحقات نهاية الخدمة",
+        errStart: "تاريخ بداية العمل مطلوب", errEnd: "تاريخ نهاية العمل مطلوب",
         errEndAfter: "تاريخ نهاية العمل يجب أن يكون بعد تاريخ البداية",
-        errSalary: "الراتب الشهري مطلوب ويجب أن يكون أكبر من صفر",
-        errAllowances: "قيمة البدلات غير صحيحة",
-        // عرض الخدمة
+        errSalary: "الراتب الشهري مطلوب ويجب أن يكون أكبر من صفر", errAllowances: "قيمة البدلات غير صحيحة",
         totalYears: (y)=>`إجمالي: ${y} سنة`,
-        // تفاصيل الراتب
-        baseSalary: (v)=>`الراتب الأساسي: ${v} ريال`,
-        allowances: (v)=>`البدلات: ${v} ريال`,
+        baseSalary: (v)=>`الراتب الأساسي: ${v} ريال`, allowances: (v)=>`البدلات: ${v} ريال`,
         totalMonthly: (v)=>`إجمالي الراتب الشهري: ${v} ريال`,
-        // رسائل الحساب
         noEntitlement2: "لا يستحق مكافأة نهاية الخدمة (أقل من سنتين)",
         contractNoYear: "انتهاء العقد - لا يستحق مكافأة نهاية الخدمة (أقل من سنة)",
         calcA: (yrs, sal)=>`حتى 5 سنوات: ${yrs} سنة × (${sal}/6)`,
@@ -275,52 +256,32 @@
         calcC: (yrs, sal)=>`10 سنوات فأكثر: ${yrs} سنة × ${sal}`,
       },
       en: {
-        title: "End-of-Service Benefit Calculator | Osoul",
-        appName: "End-of-Service Benefit Calculator",
-        appSubtitle: "According to Saudi Labor Law",
-        verified: "Info Verified",
+        title: "End-of-Service Benefit Calculator | Osoul", appName: "End-of-Service Benefit Calculator",
+        appSubtitle: "According to Saudi Labor Law", verified: "Info Verified",
         hero: "End-of-Service Benefit Calculator",
         heroHint: "Enter your data to get a detailed breakdown based on the termination type.",
-        employeeData: "Employee Information",
-        startDateLabel: "Start Date",
-        endDateLabel: "End Date",
-        salaryLabel: "Basic Monthly Salary (SAR)",
-        terminationLabel: "Termination Type",
-        optResignation: "Resignation",
-        optTermination: "Dismissal",
-        optContractEnd: "Contract End",
-        hasAllowances: "Has fixed allowances",
-        allowancesLabel: "Fixed allowances amount (SAR)",
-        btnCalculate: "Calculate",
-        btnReset: "Reset",
+        employeeData: "Employee Information", startDateLabel: "Start Date", endDateLabel: "End Date",
+        salaryLabel: "Basic Monthly Salary (SAR)", terminationLabel: "Termination Type",
+        optResignation: "Resignation", optTermination: "Dismissal", optContractEnd: "Contract End",
+        hasAllowances: "Has fixed allowances", allowancesLabel: "Fixed allowances amount (SAR)",
+        btnCalculate: "Calculate", btnReset: "Reset",
         disclaimer: "* Calculations are estimates. Please confirm with HR.",
-        results: "Results",
-        enterData: "Enter the required data to calculate end-of-service benefits.",
-        servicePeriod: "Service Period",
-        salaryDetails: "Salary Details",
-        calcSteps: "Calculation",
-        totalBenefitTitle: "Total End-of-Service Benefit",
-        notesTitle: "Important Notes:",
+        results: "Results", enterData: "Enter the required data to calculate end-of-service benefits.",
+        servicePeriod: "Service Period", salaryDetails: "Salary Details", calcSteps: "Calculation",
+        totalBenefitTitle: "Total End-of-Service Benefit", notesTitle: "Important Notes:",
         note1: "• This calculation follows Saudi Labor Law.",
         note2: "• <strong>Resignation:</strong> Eligibility starts at 2 years: up to 5 years = salary/6 per year, 5–<10 = salary/3, 10+ = full salary.",
         note3: "• <strong>Contract End:</strong> Half salary for the first 5 years, full salary thereafter.",
         note4: "• <strong>Dismissal:</strong> Full salary per eligible year.",
         note5: "• Please consult HR to confirm the final amount.",
-        print: "Print Results",
-        footer: "© Osoul — End-of-Service Benefit Calculator",
-        // errors
-        errStart: "Start date is required",
-        errEnd: "End date is required",
+        print: "Print Results", footer: "© Osoul — End-of-Service Benefit Calculator",
+        errStart: "Start date is required", errEnd: "End date is required",
         errEndAfter: "End date must be after start date",
         errSalary: "Monthly salary is required and must be greater than zero",
         errAllowances: "Invalid allowances value",
-        // service text
         totalYears: (y)=>`Total: ${y} years`,
-        // salary details
-        baseSalary: (v)=>`Basic salary: ${v} SAR`,
-        allowances: (v)=>`Allowances: ${v} SAR`,
+        baseSalary: (v)=>`Basic salary: ${v} SAR`, allowances: (v)=>`Allowances: ${v} SAR`,
         totalMonthly: (v)=>`Total monthly salary: ${v} SAR`,
-        // calc
         noEntitlement2: "No entitlement (less than 2 years of service)",
         contractNoYear: "Contract end — no entitlement (less than 1 year)",
         calcA: (yrs, sal)=>`Up to 5 years: ${yrs} yr × (${sal}/6)`,
@@ -329,34 +290,23 @@
       }
     };
 
-    // 2) حالة اللغة + أدوات تنسيق
     let currentLang = localStorage.getItem('lang') || 'ar';
-
     const $ = (s)=>document.querySelector(s);
     const $$ = (s)=>Array.from(document.querySelectorAll(s));
+    const fmt = (n)=> Number(n).toLocaleString(currentLang==='ar'?'ar-SA':'en-US');
 
-    const fmt = (num)=> Number(num).toLocaleString(currentLang === 'ar' ? 'ar-SA' : 'en-US');
     const setDir = ()=>{
-      const isAr = currentLang === 'ar';
-      document.documentElement.lang = isAr ? 'ar' : 'en';
-      document.documentElement.dir  = isAr ? 'rtl' : 'ltr';
+      const isAr = currentLang==='ar';
+      document.documentElement.lang = isAr?'ar':'en';
+      document.documentElement.dir  = isAr?'rtl':'ltr';
       document.body.classList.toggle('rtl', isAr);
       $('#btn-ar').classList.toggle('lang-active', isAr);
       $('#btn-en').classList.toggle('lang-active', !isAr);
       document.title = i18n[currentLang].title;
     };
-
-    const t = (key, ...args)=>{
-      const v = i18n[currentLang][key];
-      return (typeof v === 'function') ? v(...args) : v;
-    };
-
+    const t = (k,...a)=>{ const v=i18n[currentLang][k]; return typeof v==='function'?v(...a):v; };
     const applyTranslations = ()=>{
-      // العناصر ذات data-i18n
-      $$('[data-i18n]').forEach(el=>{
-        el.innerHTML = t(el.getAttribute('data-i18n')) || '';
-      });
-      // خيارات القائمة (لضمان عرض النص الصحيح بعد التبديل)
+      $$('[data-i18n]').forEach(el=>{ el.innerHTML = t(el.getAttribute('data-i18n'))||''; });
       const sel = $('#terminationType');
       if (sel) {
         sel.querySelector('option[value="resignation"]').innerHTML = t('optResignation');
@@ -364,22 +314,15 @@
         sel.querySelector('option[value="contract_end"]').innerHTML = t('optContractEnd');
       }
     };
-
     const switchLang = (lang)=>{
-      currentLang = lang;
-      localStorage.setItem('lang', lang);
-      setDir();
-      applyTranslations();
-      // إعادة عرض النتائج المُحتسبة إن وُجدت لتتنسق الأرقام والنصوص
+      currentLang = lang; localStorage.setItem('lang', lang);
+      setDir(); applyTranslations();
       if (!$('#results').classList.contains('hidden')) {
-        // يعاد بناء شاشات التفاصيل من الحالة الحالية المحفوظة في DOM قدر الإمكان
-        // (عند الحساب التالي ستُطبَّق اللغة بالكامل ديناميكيًا)
         const total = $('#totalBenefit').textContent.replace(/[^\d\.]/g,'');
         if (total) $('#totalBenefit').textContent = `${fmt(total)} ${currentLang==='ar'?'ريال':'SAR'}`;
       }
     };
 
-    // 3) عناصر النموذج/الواجهة
     const form = document.getElementById('calculatorForm');
     const hasAllowancesCheckbox = document.getElementById('hasAllowances');
     const allowancesSection = document.getElementById('allowancesSection');
@@ -388,71 +331,59 @@
     const resultsContainer = document.getElementById('resultsContainer');
     const results = document.getElementById('results');
 
-    hasAllowancesCheckbox.addEventListener('change', function () {
+    hasAllowancesCheckbox.addEventListener('change', function(){
       allowancesSection.classList.toggle('hidden', !this.checked);
-      if (!this.checked) { const el = document.getElementById('allowancesAmount'); if (el) el.value = ''; }
+      if (!this.checked) { const el=$('#allowancesAmount'); if(el) el.value=''; }
     });
 
-    function calculateServiceYears(startDate, endDate) {
-      const start = new Date(startDate);
-      const end = new Date(endDate);
-      let years = end.getFullYear() - start.getFullYear();
-      let months = end.getMonth() - start.getMonth();
-      let days = end.getDate() - start.getDate();
-      if (days < 0) { months--; days += new Date(end.getFullYear(), end.getMonth(), 0).getDate(); }
-      if (months < 0) { years--; months += 12; }
-      const totalYears = years + (months/12) + (days/365);
-      return { years, months, days, totalYears: Math.round(totalYears*100)/100 };
+    function calculateServiceYears(startDate, endDate){
+      const start = new Date(startDate), end = new Date(endDate);
+      let y=end.getFullYear()-start.getFullYear(), m=end.getMonth()-start.getMonth(), d=end.getDate()-start.getDate();
+      if (d<0){ m--; d+=new Date(end.getFullYear(), end.getMonth(), 0).getDate(); }
+      if (m<0){ y--; m+=12; }
+      const totalYears = y + (m/12) + (d/365);
+      return { years:y, months:m, days:d, totalYears:Math.round(totalYears*100)/100 };
     }
 
-    function validateForm() {
-      let isValid = true;
-      const errors = {};
+    function validateForm(){
+      let ok=true; const errs={};
       $$('.text-red-600').forEach(el=>el.classList.add('hidden'));
       $$('input, select').forEach(i=>i.classList.remove('border-red-500'));
 
-      const startDate = $('#startDate').value;
-      const endDate = $('#endDate').value;
-      const monthlySalary = parseFloat($('#monthlySalary').value);
-      const hasAllowances = $('#hasAllowances').checked;
-      const allowancesAmount = parseFloat($('#allowancesAmount')?.value) || 0;
+      const startDate=$('#startDate').value, endDate=$('#endDate').value;
+      const monthlySalary=parseFloat($('#monthlySalary').value);
+      const hasAllowances=$('#hasAllowances').checked;
+      const allowancesAmount=parseFloat($('#allowancesAmount')?.value)||0;
 
-      if (!startDate) { errors.startDate = t('errStart'); isValid=false; }
-      if (!endDate)   { errors.endDate   = t('errEnd');   isValid=false; }
-      if (!monthlySalary || monthlySalary <= 0) { errors.salary = t('errSalary'); isValid=false; }
-      if (startDate && endDate && new Date(startDate) >= new Date(endDate)) { errors.endDate = t('errEndAfter'); isValid=false; }
-      if (hasAllowances && allowancesAmount < 0) { errors.allowances = t('errAllowances'); isValid=false; }
+      if(!startDate){ errs.startDate=t('errStart'); ok=false; }
+      if(!endDate){ errs.endDate=t('errEnd'); ok=false; }
+      if(!monthlySalary || monthlySalary<=0){ errs.salary=t('errSalary'); ok=false; }
+      if(startDate && endDate && new Date(startDate)>=new Date(endDate)){ errs.endDate=t('errEndAfter'); ok=false; }
+      if(hasAllowances && allowancesAmount<0){ errs.allowances=t('errAllowances'); ok=false; }
 
-      Object.keys(errors).forEach(key=>{
-        const errEl = document.getElementById(key + 'Error');
-        if (errEl){ errEl.textContent = errors[key]; errEl.classList.remove('hidden'); }
-        let inputEl;
-        if (key === 'salary') inputEl = $('#monthlySalary');
-        else if (key === 'allowances') inputEl = $('#allowancesAmount');
-        else inputEl = document.getElementById(key);
-        if (inputEl) inputEl.classList.add('border-red-500');
+      Object.keys(errs).forEach(key=>{
+        const e=document.getElementById(key+'Error'); if(e){ e.textContent=errs[key]; e.classList.remove('hidden'); }
+        let input; if(key==='salary') input=$('#monthlySalary');
+        else if(key==='allowances') input=$('#allowancesAmount');
+        else input=document.getElementById(key);
+        if(input) input.classList.add('border-red-500');
       });
-      return isValid;
+      return ok;
     }
 
     function displayResults(result){
-      // فترة الخدمة
       $('#serviceTime').textContent =
         `${fmt(result.serviceTime.years)} ${currentLang==='ar'?'سنة':'yr'} `
         + `${currentLang==='ar'?'و':''} ${fmt(result.serviceTime.months)} ${currentLang==='ar'?'شهر':'mo'} `
         + `${currentLang==='ar'?'و':''} ${fmt(result.serviceTime.days)} ${currentLang==='ar'?'يوم':'day'}`;
       $('#totalYears').textContent = t('totalYears', result.serviceTime.totalYears);
 
-      // تفاصيل الراتب
       let s = `<p>${t('baseSalary', fmt(result.monthlySalary))}</p>`;
-      if (result.allowancesAmount > 0) s += `<p>${t('allowances', fmt(result.allowancesAmount))}</p>`;
+      if (result.allowancesAmount>0) s += `<p>${t('allowances', fmt(result.allowancesAmount))}</p>`;
       s += `<p class="font-medium">${t('totalMonthly', fmt(result.totalMonthlySalary))}</p>`;
       $('#salaryDetails').innerHTML = s;
 
-      // خطوات الحساب
-      $('#calculationSteps').innerHTML = result.calculation.map(line=>`<p>${line}</p>`).join('');
-
-      // الإجمالي
+      $('#calculationSteps').innerHTML = result.calculation.map(l=>`<p>${l}</p>`).join('');
       $('#totalBenefit').textContent = `${fmt(result.benefit)} ${currentLang==='ar'?'ريال':'SAR'}`;
 
       resultsContainer.classList.add('hidden');
@@ -460,80 +391,51 @@
       printBtn.classList.remove('hidden');
     }
 
-    function calculateBenefit() {
-      if (!validateForm()) return;
+    function calculateBenefit(){
+      if(!validateForm()) return;
+      const startDate=$('#startDate').value, endDate=$('#endDate').value;
+      const monthlySalary=parseFloat($('#monthlySalary').value);
+      const terminationType=$('#terminationType').value;
+      const hasAllowances=$('#hasAllowances').checked;
+      const allowancesAmount=hasAllowances ? (parseFloat($('#allowancesAmount').value)||0) : 0;
 
-      const startDate = $('#startDate').value;
-      const endDate = $('#endDate').value;
-      const monthlySalary = parseFloat($('#monthlySalary').value);
-      const terminationType = $('#terminationType').value;
-      const hasAllowances = $('#hasAllowances').checked;
-      const allowancesAmount = hasAllowances ? (parseFloat($('#allowancesAmount').value) || 0) : 0;
+      const serviceTime=calculateServiceYears(startDate,endDate);
+      const totalMonthlySalary=monthlySalary+allowancesAmount;
 
-      const serviceTime = calculateServiceYears(startDate, endDate);
-      const totalMonthlySalary = monthlySalary + allowancesAmount;
-
-      let benefit = 0;
-      let calculation = [];
-
-      if (terminationType === 'resignation') {
-        const y = serviceTime.totalYears;
-        if (y < 2) {
-          benefit = 0;
-          calculation.push(t('noEntitlement2'));
-        } else {
-          const rateA = totalMonthlySalary / 6;
-          const rateB = totalMonthlySalary / 3;
-          const rateC = totalMonthlySalary;
-
-          const yearsA = Math.min(y, 5);
-          const yearsB = Math.min(Math.max(y - 5, 0), 5);
-          const yearsC = Math.max(y - 10, 0);
-
-          const partA = yearsA * rateA;
-          const partB = yearsB * rateB;
-          const partC = yearsC * rateC;
-
-          benefit = +(partA + partB + partC).toFixed(2);
-
+      let benefit=0, calculation=[];
+      if(terminationType==='resignation'){
+        const y=serviceTime.totalYears;
+        if(y<2){ benefit=0; calculation.push(t('noEntitlement2')); }
+        else{
+          const rateA=totalMonthlySalary/6, rateB=totalMonthlySalary/3, rateC=totalMonthlySalary;
+          const yearsA=Math.min(y,5), yearsB=Math.min(Math.max(y-5,0),5), yearsC=Math.max(y-10,0);
+          const partA=yearsA*rateA, partB=yearsB*rateB, partC=yearsC*rateC;
+          benefit=+(partA+partB+partC).toFixed(2);
           calculation.push(`${t('calcA', yearsA.toFixed(2), fmt(totalMonthlySalary))} = ${fmt(partA)} ${currentLang==='ar'?'ريال':'SAR'}`);
-          if (yearsB > 0) calculation.push(`${t('calcB', yearsB.toFixed(2), fmt(totalMonthlySalary))} = ${fmt(partB)} ${currentLang==='ar'?'ريال':'SAR'}`);
-          if (yearsC > 0) calculation.push(`${t('calcC', yearsC.toFixed(2), fmt(totalMonthlySalary))} = ${fmt(partC)} ${currentLang==='ar'?'ريال':'SAR'}`);
+          if(yearsB>0) calculation.push(`${t('calcB', yearsB.toFixed(2), fmt(totalMonthlySalary))} = ${fmt(partB)} ${currentLang==='ar'?'ريال':'SAR'}`);
+          if(yearsC>0) calculation.push(`${t('calcC', yearsC.toFixed(2), fmt(totalMonthlySalary))} = ${fmt(partC)} ${currentLang==='ar'?'ريال':'SAR'}`);
         }
-
-      } else if (terminationType === 'contract_end') {
-        if (serviceTime.totalYears < 1) {
-          benefit = 0; calculation.push(t('contractNoYear'));
-        } else if (serviceTime.totalYears <= 5) {
-          benefit = (totalMonthlySalary / 2) * serviceTime.totalYears;
-          calculation.push(
-            `${currentLang==='ar'?'انتهاء العقد:':''} ${serviceTime.totalYears.toFixed(2)} ${currentLang==='ar'?'سنة':'yr'} × (${fmt(totalMonthlySalary)}/${currentLang==='ar'?'2':'2'}) = ${fmt(benefit)} ${currentLang==='ar'?'ريال':'SAR'}`
-          );
-        } else {
-          const firstPart = (totalMonthlySalary / 2) * 5;
-          const secondPart = totalMonthlySalary * (serviceTime.totalYears - 5);
-          benefit = firstPart + secondPart;
+      }else if(terminationType==='contract_end'){
+        if(serviceTime.totalYears<1){ benefit=0; calculation.push(t('contractNoYear')); }
+        else if(serviceTime.totalYears<=5){
+          benefit=(totalMonthlySalary/2)*serviceTime.totalYears;
+          calculation.push(`${serviceTime.totalYears.toFixed(2)} ${currentLang==='ar'?'سنة':'yr'} × (${fmt(totalMonthlySalary)}/2) = ${fmt(benefit)} ${currentLang==='ar'?'ريال':'SAR'}`);
+        }else{
+          const firstPart=(totalMonthlySalary/2)*5;
+          const secondPart=totalMonthlySalary*(serviceTime.totalYears-5);
+          benefit=firstPart+secondPart;
           calculation.push(`${currentLang==='ar'?'أول 5 سنوات':'First 5 years'}: 5 × (${fmt(totalMonthlySalary)}/2) = ${fmt(firstPart)} ${currentLang==='ar'?'ريال':'SAR'}`);
-          calculation.push(`${currentLang==='ar'?'باقي السنوات':'Remaining years'}: ${(serviceTime.totalYears - 5).toFixed(2)} × ${fmt(totalMonthlySalary)} = ${fmt(secondPart)} ${currentLang==='ar'?'ريال':'SAR'}`);
+          calculation.push(`${currentLang==='ar'?'باقي السنوات':'Remaining years'}: ${(serviceTime.totalYears-5).toFixed(2)} × ${fmt(totalMonthlySalary)} = ${fmt(secondPart)} ${currentLang==='ar'?'ريال':'SAR'}`);
         }
-
-      } else if (terminationType === 'termination') {
-        if (serviceTime.totalYears < 1) {
-          benefit = 0; calculation.push(currentLang==='ar'?'لا يستحق مكافأة نهاية الخدمة (أقل من سنة)':'No entitlement (less than 1 year)');
-        } else {
-          benefit = totalMonthlySalary * serviceTime.totalYears;
+      }else if(terminationType==='termination'){
+        if(serviceTime.totalYears<1){ benefit=0; calculation.push(currentLang==='ar'?'لا يستحق مكافأة نهاية الخدمة (أقل من سنة)':'No entitlement (less than 1 year)'); }
+        else{
+          benefit=totalMonthlySalary*serviceTime.totalYears;
           calculation.push(`${serviceTime.totalYears.toFixed(2)} ${currentLang==='ar'?'سنة':'yr'} × ${fmt(totalMonthlySalary)} = ${fmt(benefit)} ${currentLang==='ar'?'ريال':'SAR'}`);
         }
       }
 
-      displayResults({
-        serviceTime,
-        monthlySalary,
-        allowancesAmount,
-        totalMonthlySalary,
-        benefit: Math.round(benefit * 100) / 100,
-        calculation
-      });
+      displayResults({ serviceTime, monthlySalary, allowancesAmount, totalMonthlySalary, benefit:Math.round(benefit*100)/100, calculation });
     }
 
     function printResults(){ window.print(); }
@@ -548,7 +450,6 @@
       $('#endDate').valueAsDate = new Date();
     }
 
-    // الأحداث
     document.getElementById('btn-ar').addEventListener('click', ()=>switchLang('ar'));
     document.getElementById('btn-en').addEventListener('click', ()=>switchLang('en'));
     document.getElementById('endDate').valueAsDate = new Date();
@@ -556,10 +457,7 @@
     document.getElementById('resetBtn').addEventListener('click', resetForm);
     document.getElementById('calculatorForm').addEventListener('submit', (e)=>{ e.preventDefault(); calculateBenefit(); });
 
-    // أول تحميل
     setDir(); applyTranslations();
   </script>
 </body>
 </html>
-
-
